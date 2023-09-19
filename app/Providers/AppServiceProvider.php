@@ -25,6 +25,11 @@ class AppServiceProvider extends ServiceProvider
 
         //Model::preventLazyLoading(!app()->isProduction());
 
+
+           if ($this->app->environment('production')) {
+        URL::forceScheme('https');
+    }
+        
         // should this be an env variable?
         // just enable if on testing?
         if (config('app.fake_notifications')) {
